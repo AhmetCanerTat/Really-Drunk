@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reallydrunk/model/player.dart';
 import 'package:reallydrunk/pages/wheely_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,7 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late TextEditingController _controller;
-  List<String> persons = [];
+  List<Player> players = [];
   @override
   void initState() {
     super.initState();
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void savePerson() {
-    _controller.text.isNotEmpty ? persons.add(_controller.text) : null;
+    _controller.text.isNotEmpty ? players.add(Player(_controller.text)) : null;
     _controller.clear();
     setState(() {});
   }
@@ -64,12 +65,12 @@ class _HomePageState extends State<HomePage> {
         const Spacer(),
         Expanded(
             flex: 4,
-            child: persons.isNotEmpty
+            child: players.isNotEmpty
                 ? ListView.builder(
-                    itemCount: persons.length,
+                    itemCount: players.length,
                     itemBuilder: ((context, index) => Center(
                             child: Text(
-                          persons[index],
+                          players[index].name,
                           style: const TextStyle(
                               fontSize: 30, color: Colors.orange),
                         ))))
@@ -78,14 +79,14 @@ class _HomePageState extends State<HomePage> {
             child: Container(
                 margin: const EdgeInsets.all(50),
                 child: ElevatedButton(
-                  onPressed: persons.isEmpty
+                  onPressed: players.isEmpty
                       ? null
                       : () {
                           Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          WheelyPage(persons: persons)))
+                                          WheelyPage(players: players)))
                               .then((value) => setState(() {}));
                         },
                   child: const Text("Play!"),
