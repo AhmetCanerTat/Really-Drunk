@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reallydrunk/pages/wheely_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,7 +10,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late TextEditingController _controller;
-  List<String> Persons = [];
+  List<String> persons = [];
   @override
   void initState() {
     super.initState();
@@ -23,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void savePerson() {
-    Persons.add(_controller.text);
+    _controller.text.isNotEmpty ? persons.add(_controller.text) : null;
     _controller.clear();
     setState(() {});
   }
@@ -31,6 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -59,15 +61,15 @@ class _HomePageState extends State<HomePage> {
                     onPressed: savePerson, child: const Text("Submit"))
               ],
             )),
-        Spacer(),
+        const Spacer(),
         Expanded(
             flex: 4,
-            child: Persons.isNotEmpty
+            child: persons.isNotEmpty
                 ? ListView.builder(
-                    itemCount: Persons.length,
+                    itemCount: persons.length,
                     itemBuilder: ((context, index) => Center(
                             child: Text(
-                          Persons[index],
+                          persons[index],
                           style: const TextStyle(
                               fontSize: 30, color: Colors.orange),
                         ))))
@@ -75,9 +77,18 @@ class _HomePageState extends State<HomePage> {
         Center(
             child: Container(
                 margin: const EdgeInsets.all(50),
-                child: const ElevatedButton(
-                  onPressed: null,
-                  child: Text("Play!"),
+                child: ElevatedButton(
+                  onPressed: persons.isEmpty
+                      ? null
+                      : () {
+                          Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          WheelyPage(persons: persons)))
+                              .then((value) => setState(() {}));
+                        },
+                  child: const Text("Play!"),
                 )))
       ]),
     );
