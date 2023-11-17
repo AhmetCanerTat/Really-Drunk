@@ -27,6 +27,7 @@ class _WheelyPageState extends State<WheelyPage> {
   }
 }
 
+// ignore: must_be_immutable
 class BottomList extends StatelessWidget {
   List<String> persons;
   BottomList({super.key, required this.persons});
