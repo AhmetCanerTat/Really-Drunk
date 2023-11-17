@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reallydrunk/model/player.dart';
-import 'package:reallydrunk/pages/wheel_page.dart';
+import 'package:reallydrunk/widgets/wheel.dart';
 
 // ignore: must_be_immutable
 class WheelyPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _WheelyPageState extends State<WheelyPage> {
         ),
         Expanded(
           flex: 3,
-          child: Container(margin: EdgeInsets.all(10), child: Wheel()),
+          child: Container(margin: const EdgeInsets.all(10), child: Wheel()),
         ),
         Expanded(child: BottomList(players: widget.players))
       ]),
@@ -41,7 +41,7 @@ class BottomList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Container(
+      child: SizedBox(
         width: 300,
         child: ElevatedButton(
           child: const Text('Players'),
@@ -71,7 +71,7 @@ class BottomList extends StatelessWidget {
                                         ))))
                                 : Container()),
                         Container(
-                          margin: EdgeInsets.only(bottom: 20),
+                          margin: const EdgeInsets.only(bottom: 20),
                           child: ElevatedButton(
                             child: const Text('Close'),
                             onPressed: () => Navigator.pop(context),
