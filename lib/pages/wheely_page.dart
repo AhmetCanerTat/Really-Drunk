@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reallydrunk/pages/wheel_page.dart';
 
 // ignore: must_be_immutable
 class WheelyPage extends StatefulWidget {
@@ -21,7 +22,11 @@ class _WheelyPageState extends State<WheelyPage> {
             style: const TextStyle(color: Colors.amber, fontSize: 30),
           ),
         ),
-        BottomList(persons: widget.persons)
+        Expanded(
+          flex: 3,
+          child: Container(margin: EdgeInsets.all(10), child: Wheel()),
+        ),
+        Expanded(child: BottomList(persons: widget.persons))
       ]),
     );
   }
