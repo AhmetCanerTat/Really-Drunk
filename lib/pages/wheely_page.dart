@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:reallydrunk/model/player.dart';
+import 'package:reallydrunk/pages/wheel_page.dart';
 
 // ignore: must_be_immutable
 class WheelyPage extends StatefulWidget {
-  List<String> persons;
-  WheelyPage({super.key, required this.persons});
+  List<Player> players;
+  WheelyPage({super.key, required this.players});
 
   @override
   State<WheelyPage> createState() => _WheelyPageState();
@@ -17,19 +19,24 @@ class _WheelyPageState extends State<WheelyPage> {
       body: Column(children: [
         Center(
           child: Text(
-            widget.persons[0],
+            widget.players[0].name,
             style: const TextStyle(color: Colors.amber, fontSize: 30),
           ),
         ),
-        BottomList(persons: widget.persons)
+        Expanded(
+          flex: 3,
+          child: Container(margin: EdgeInsets.all(10), child: Wheel()),
+        ),
+        Expanded(child: BottomList(players: widget.players))
       ]),
     );
   }
 }
 
+// ignore: must_be_immutable
 class BottomList extends StatelessWidget {
-  List<String> persons;
-  BottomList({super.key, required this.persons});
+  List<Player> players;
+  BottomList({super.key, required this.players});
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +58,13 @@ class BottomList extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Expanded(
-                            child: persons.isNotEmpty
+                            child: players.isNotEmpty
                                 ? ListView.builder(
                                     shrinkWrap: true,
-                                    itemCount: persons.length,
+                                    itemCount: players.length,
                                     itemBuilder: ((context, index) => Center(
                                             child: Text(
-                                          persons[index],
+                                          players[index].name,
                                           style: const TextStyle(
                                               fontSize: 30,
                                               color: Colors.white),

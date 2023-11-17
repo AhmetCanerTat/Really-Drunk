@@ -20,6 +20,7 @@ class _WheelState extends State<Wheel> {
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
         onTap: () {
           setState(() {
@@ -38,5 +39,6 @@ class _WheelState extends State<Wheel> {
               FortuneItem(child: Text("Hi")),
               FortuneItem(child: Text("Hi"))
             ]));
+
   }
 }
