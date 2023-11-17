@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reallydrunk/pages/home_page.dart';
-import 'package:reallydrunk/pages/wheel_page.dart';
+import 'package:reallydrunk/widgets/wheel.dart';
 
 void main() async {
   runApp(MyApp());
@@ -9,10 +9,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Lets get really drunk',
       debugShowCheckedModeBanner: false,
-      home: Wheel(),
+      home: HomePage(),
     );
   }
 }
