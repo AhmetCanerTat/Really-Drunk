@@ -10,6 +10,7 @@ import 'package:reallydrunk/widgets/curse_modal.dart';
 import 'package:reallydrunk/widgets/minigamemp_modal.dart';
 import 'package:reallydrunk/widgets/mystery_modal.dart';
 import 'package:reallydrunk/widgets/rockpaper.dart';
+import 'package:reallydrunk/widgets/takesip.dart';
 
 class FullScreenModal extends StatelessWidget {
   Library library = Library();
@@ -30,6 +31,8 @@ class FullScreenModal extends StatelessWidget {
     } else if (option.type == "Blessing") {
       Blessing blessing = option as Blessing;
       selectedWidget = BlessingModal(blessing: blessing);
+    } else {
+      selectedWidget = TakeSip();
     }
     return selectedWidget;
   }

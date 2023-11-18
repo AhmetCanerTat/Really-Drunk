@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'package:reallydrunk/library/library.dart';
 import 'package:reallydrunk/model/option.dart';
+import 'package:reallydrunk/model/takesip.dart';
 
 import 'package:reallydrunk/widgets/modal.dart';
 
@@ -106,10 +107,11 @@ class _WheelState extends State<Wheel> {
       } else if (items[selectedOption].text == "Mystery") {
         return library
             .mysteryList[Random().nextInt(library.mysteryList.length)];
-      } else {
+      } else if (items[selectedOption].text == "Minigame") {
         return library
             .minigameMPList[Random().nextInt(library.minigameMPList.length)];
       }
+      return TakeSip("Take sip", "Take sip");
     }
 
     void delayedOption() {
