@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        toolbarHeight: 120,
+        toolbarHeight: 100,
         title: Center(
           child: Container(
               height: 100,
@@ -47,8 +47,11 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Column(children: [
+        Spacer(
+          flex: 2,
+        ),
         Expanded(
-            flex: 2,
+            flex: 3,
             child: Column(
               children: [
                 Container(
@@ -62,7 +65,7 @@ class _HomePageState extends State<HomePage> {
               ],
             )),
         Expanded(
-            flex: 4,
+            flex: 3,
             child: players.isNotEmpty
                 ? ListView.builder(
                     itemCount: players.length,
@@ -88,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                               .then((value) => setState(() {}));
                         },
                   child: const Text("Play!"),
-                )))
+                ))),
       ]),
     );
   }

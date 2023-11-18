@@ -1,72 +1,49 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:reallydrunk/library/library.dart';
+import 'package:reallydrunk/model/blessing.dart';
 import 'package:reallydrunk/model/curse.dart';
+import 'package:reallydrunk/model/minigamemp.dart';
+import 'package:reallydrunk/model/mystery.dart';
+import 'package:reallydrunk/model/option.dart';
+import 'package:reallydrunk/widgets/blessing_modal.dart';
+import 'package:reallydrunk/widgets/curse_modal.dart';
+import 'package:reallydrunk/widgets/minigamemp_modal.dart';
+import 'package:reallydrunk/widgets/mystery_modal.dart';
 import 'package:reallydrunk/widgets/rockpaper.dart';
 
 class FullScreenModal extends StatelessWidget {
   Library library = Library();
+  Option option;
+  FullScreenModal({super.key, required this.option});
+
+  Widget chooseOption(Option option) {
+    Widget selectedWidget = const Text("test");
+    if (option.type == "Curse") {
+      Curse curse = option as Curse;
+      selectedWidget = CurseModal(curse: curse);
+    } else if (option.type == "MinigameMP") {
+      MinigameMP minigameMP = option as MinigameMP;
+      selectedWidget = MinigameMPModal(minigameMP: minigameMP);
+    } else if (option.type == "Mystery") {
+      Mystery mystery = option as Mystery;
+      selectedWidget = MysteryModal(mystery: mystery);
+    } else if (option.type == "Blessing") {
+      Blessing blessing = option as Blessing;
+      selectedWidget = BlessingModal(blessing: blessing);
+    }
+    return selectedWidget;
+  }
 
   @override
   Widget build(BuildContext context) {
-    library.addCurses();
-    Curse curse = library.curseList[Random().nextInt(library.curseList.length)];
-
     return GestureDetector(
       onTap: () {
         Navigator.pop(context); // Close the modal if tapped outside
       },
       child: Material(
         color: Colors.transparent,
-        child: RockPaper(),
+        child: chooseOption(option),
       ),
-    );
-  }
-
-  Column curseMethod(Curse curse) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        Expanded(
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    curse.name,
-                    style: const TextStyle(fontSize: 50),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Center(
-                    child: Text(
-                      curse.description,
-                      style: const TextStyle(fontSize: 30),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Text(
-                    "For ${curse.turn} turns",
-                    style: const TextStyle(fontSize: 30),
-                  ),
-                )
-                // Add more widgets for the modal content
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

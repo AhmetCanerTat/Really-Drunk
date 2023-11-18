@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'dart:ffi';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:reallydrunk/library/library.dart';
+import 'package:reallydrunk/model/option.dart';
 
 import 'package:reallydrunk/widgets/modal.dart';
 
@@ -18,7 +21,7 @@ class Wheel extends StatefulWidget {
 
 class Item {
   String text = "";
-  Color color = Color(000000);
+  Color color = const Color(000000);
 }
 
 class _WheelState extends State<Wheel> {
@@ -31,52 +34,74 @@ class _WheelState extends State<Wheel> {
     super.dispose();
   }
 
-  void _showFullScreenModal(BuildContext context) {
+  void _showFullScreenModal(BuildContext context, Option option) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       isDismissible: true,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
       ),
       builder: (BuildContext context) {
-        return FullScreenModal();
+        return FullScreenModal(
+          option: option,
+        );
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    Library library = Library();
+    library.addCurses();
+    library.addBlessings();
+    library.addMinigamesMP();
+    library.addMysteries();
     final items = <Item>[
       Item()
         ..text = "Curse"
-        ..color = Color(0XFFDE3C4B),
+        ..color = const Color(0XFFDE3C4B),
       Item()
         ..text = "Minigame"
-        ..color = Color(0XFFF79D26),
+        ..color = const Color(0XFFF79D26),
       Item()
         ..text = "Blessing"
-        ..color = Color(0XFF00A676),
+        ..color = const Color(0XFF00A676),
       Item()
         ..text = "Mystery"
-        ..color = Color(0XFF74226C),
+        ..color = const Color(0XFF74226C),
       Item()
         ..text = "Curse"
-        ..color = Color(0XFFDE3C4B),
+        ..color = const Color(0XFFDE3C4B),
       Item()
         ..text = "Minigame"
-        ..color = Color(0XFFF79D26),
+        ..color = const Color(0XFFF79D26),
       Item()
         ..text = "Blessing"
-        ..color = Color(0XFF00A676),
+        ..color = const Color(0XFF00A676),
       Item()
         ..text = "Mystery"
-        ..color = Color(0XFF74226C),
+        ..color = const Color(0XFF74226C),
     ];
+
+    Option pickOption() {
+      if (items[selectedOption].text == "Curse") {
+        return library.curseList[Random().nextInt(library.curseList.length)];
+      } else if (items[selectedOption].text == "Blessing") {
+        return library
+            .blessingList[Random().nextInt(library.blessingList.length)];
+      } else if (items[selectedOption].text == "Mystery") {
+        return library
+            .mysteryList[Random().nextInt(library.mysteryList.length)];
+      } else {
+        return library
+            .minigameMPList[Random().nextInt(library.minigameMPList.length)];
+      }
+    }
 
     void delayedOption() {
       Future.delayed(const Duration(seconds: 5), () {
-        _showFullScreenModal(context);
+        _showFullScreenModal(context, pickOption());
       });
     }
 
@@ -101,7 +126,7 @@ class _WheelState extends State<Wheel> {
                       child: Text(it.text),
                       style: FortuneItemStyle(
                           color: it.color,
-                          borderColor: Color(0XFF353531),
+                          borderColor: const Color(0XFF353531),
                           borderWidth: 4)),
               ],
             ),

@@ -1,6 +1,7 @@
-class Blessing {
-  late String name;
-  late String description;
+import 'package:reallydrunk/model/option.dart';
+
+class Blessing extends Option {
   late int turn;
-  Blessing(this.description, this.name, this.turn);
+  Blessing(String description, String name, this.turn)
+      : super(name, description, "Blessing");
 }
