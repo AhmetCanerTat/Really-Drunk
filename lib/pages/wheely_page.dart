@@ -19,6 +19,12 @@ class _WheelyPageState extends State<WheelyPage> {
     });
   }
 
+  void delayedFunction() {
+    Future.delayed(const Duration(seconds: 6), () {
+      increaseTurn();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +41,7 @@ class _WheelyPageState extends State<WheelyPage> {
           child: Container(
               margin: const EdgeInsets.all(10),
               child: Wheel(
-                increaseTurn: increaseTurn,
+                increaseTurn: delayedFunction,
               )),
         ),
         Expanded(child: BottomList(players: widget.players))
