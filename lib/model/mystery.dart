@@ -1,6 +1,7 @@
-class Mystery {
-  late String name;
-  late String description;
+import 'package:reallydrunk/model/option.dart';
+
+class Mystery extends Option {
   late int turn;
-  Mystery(this.description, this.name, this.turn);
+  Mystery(String description, String name, this.turn)
+      : super(name, description,"Mystery");
 }

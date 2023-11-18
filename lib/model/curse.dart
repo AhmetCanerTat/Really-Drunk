@@ -1,6 +1,7 @@
-class Curse {
-  late String name;
-  late String description;
+import 'package:reallydrunk/model/option.dart';
+
+class Curse extends Option {
   late int turn;
-   Curse(this.description, this.name, this.turn);
+  Curse(String description, String name, this.turn)
+      : super(name, description, "Curse");
 }
