@@ -60,11 +60,17 @@ class _WheelState extends State<Wheel> {
     library.addMysteries();
     final items = <Item>[
       Item()
+        ..text = "Take 2 Sips"
+        ..color = Colors.blueAccent,
+      Item()
         ..text = "Curse"
         ..color = const Color(0XFFDE3C4B),
       Item()
         ..text = "Minigame"
         ..color = const Color(0XFFF79D26),
+      Item()
+        ..text = "Take 2 Sips"
+        ..color = Colors.blueAccent,
       Item()
         ..text = "Blessing"
         ..color = const Color(0XFF00A676),
@@ -72,11 +78,17 @@ class _WheelState extends State<Wheel> {
         ..text = "Mystery"
         ..color = const Color(0XFF74226C),
       Item()
+        ..text = "Take 2 Sips"
+        ..color = Colors.blueAccent,
+      Item()
         ..text = "Curse"
         ..color = const Color(0XFFDE3C4B),
       Item()
         ..text = "Minigame"
         ..color = const Color(0XFFF79D26),
+      Item()
+        ..text = "Take 2 Sips"
+        ..color = Colors.blueAccent,
       Item()
         ..text = "Blessing"
         ..color = const Color(0XFF00A676),
