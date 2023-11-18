@@ -21,6 +21,11 @@ class Library {
         3));
     curseList
         .add(Curse("You must drink without using your hands.", "Amputee", 3));
+    curseList.add(Curse(
+        "You have to drink whenever [player] hast to drink", "False Love", 5));
+    curseList.add(Curse(
+        "Everytime you drink you have get up and spin 3 times", "Beyblade", 3));
+    curseList.add(Curse("You have dinosaur hands", "Chicken?", 5));
   }
 
   void addMinigamesMP() {
@@ -32,6 +37,11 @@ class Library {
         "The last player touching the floor must drink 5 sips.",
         "The floor is Lava",
         8));
+    minigameMPList
+        .add(MinigameMP("You have to stand on your one foot", "One Leg", 20));
+    minigameMPList.add(
+        MinigameMP("You have to arm wrestle [Player]", "Arm Wrestle", 180));
+    minigameMPList.add(MinigameMP("Staring Contest", "Eyes dont lie", 30));
   }
 
   void addMysteries() {
@@ -48,5 +58,11 @@ class Library {
     blessingList
         .add(Blessing("Any curses you currently have are gone", "Cure", 0));
     blessingList.add(Blessing("Give another player 3 sips", "Gift", 0));
+    blessingList.add(Blessing(
+        "Next time you drink you can pass it to someone", "Reflect", 0));
+    blessingList.add(Blessing(
+        "Choose two player to be mate, whenever one drink other has to drink aswell",
+        "Cupid",
+        0));
   }
 }

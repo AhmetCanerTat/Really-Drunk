@@ -52,6 +52,7 @@ class _WheelState extends State<Wheel> {
 
   @override
   Widget build(BuildContext context) {
+    bool isSpinning = false;
     Library library = Library();
     library.addCurses();
     library.addBlessings();
@@ -107,12 +108,20 @@ class _WheelState extends State<Wheel> {
 
     return GestureDetector(
       onTap: () {
-        setState(() {
-          selectedOption = Fortune.randomInt(0, items.length);
-          selected.add(selectedOption);
-          widget.increaseTurn();
-          delayedOption();
-        });
+        if (!isSpinning) {
+          setState(() {
+            selectedOption = Fortune.randomInt(0, items.length);
+            selected.add(selectedOption);
+            widget.increaseTurn();
+            delayedOption();
+            isSpinning = true;
+          });
+          Timer(const Duration(seconds: 6), () {
+            setState(() {
+              isSpinning = false;
+            });
+          });
+        }
       },
       child: Column(
         children: [
