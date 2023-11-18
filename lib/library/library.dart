@@ -10,6 +10,7 @@ class Library {
   List<Mystery> mysteryList = [];
 
   void addCurses() {
+    curseList.add(Curse("You have to sit on the ground", "Too Comfortable", 5));
     curseList
         .add(Curse("You cannot speak! If you do, take 5 sips.", "Silence", 5));
     curseList.add(
