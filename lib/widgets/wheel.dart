@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
-import 'package:reallydrunk/pages/curse_page.dart';
+
 import 'package:reallydrunk/widgets/modal.dart';
 
 // ignore: must_be_immutable
