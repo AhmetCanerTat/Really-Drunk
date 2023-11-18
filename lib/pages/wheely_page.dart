@@ -28,8 +28,10 @@ class _WheelyPageState extends State<WheelyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF4A261C),
-      appBar: AppBar(),
+      backgroundColor: Color(0XFF353531),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: Column(children: [
         Center(
           child: Text(
@@ -72,7 +74,7 @@ class BottomList extends StatelessWidget {
               builder: (BuildContext context) {
                 return Container(
                   height: 300,
-                  color: Colors.amber,
+                  color: Color(0XFFF79519),
                   child: Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
