@@ -12,6 +12,13 @@ class WheelyPage extends StatefulWidget {
 }
 
 class _WheelyPageState extends State<WheelyPage> {
+  int turnCount = 0;
+  void increaseTurn() {
+    setState(() {
+      turnCount += 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,13 +26,17 @@ class _WheelyPageState extends State<WheelyPage> {
       body: Column(children: [
         Center(
           child: Text(
-            widget.players[0].name,
+            widget.players[turnCount % widget.players.length].name,
             style: const TextStyle(color: Colors.amber, fontSize: 30),
           ),
         ),
         Expanded(
           flex: 3,
-          child: Container(margin: const EdgeInsets.all(10), child: Wheel()),
+          child: Container(
+              margin: const EdgeInsets.all(10),
+              child: Wheel(
+                increaseTurn: increaseTurn,
+              )),
         ),
         Expanded(child: BottomList(players: widget.players))
       ]),
