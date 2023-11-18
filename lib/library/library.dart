@@ -22,7 +22,9 @@ class Library {
     curseList
         .add(Curse("You must drink without using your hands.", "Amputee", 3));
     curseList.add(Curse(
-        "You have to drink whenever [player] hast to drink", "False Love", 5));
+        "You have to drink whenever the person on your left has to drink",
+        "False Love",
+        5));
     curseList.add(Curse(
         "Everytime you drink you have get up and spin 3 times", "Beyblade", 3));
     curseList.add(Curse("You have dinosaur hands", "Chicken?", 5));
@@ -30,7 +32,7 @@ class Library {
 
   void addMinigamesMP() {
     minigameMPList.add(MinigameMP(
-        "You are it, play tag with [other player] for 10 seconds. Whoever is 'it' at the end must drink 5 sips",
+        "You are it, play tag with the person on your left for 10 seconds. Whoever is 'it' at the end must drink 5 sips",
         "Tag",
         10));
     minigameMPList.add(MinigameMP(
@@ -39,9 +41,12 @@ class Library {
         8));
     minigameMPList
         .add(MinigameMP("You have to stand on your one foot", "One Leg", 20));
-    minigameMPList.add(
-        MinigameMP("You have to arm wrestle [Player]", "Arm Wrestle", 180));
-    minigameMPList.add(MinigameMP("Staring Contest", "Eyes dont lie", 30));
+    minigameMPList.add(MinigameMP(
+        "You have to arm wrestle the person on your left ",
+        "Arm Wrestle",
+        180));
+    minigameMPList.add(MinigameMP(
+        "Staring Contest the person on your left ", "Eyes dont lie", 30));
   }
 
   void addMysteries() {
