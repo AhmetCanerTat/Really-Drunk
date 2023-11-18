@@ -33,36 +33,34 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0XFF353531),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Center(
-          child: Text(
-            "Let's Get Really Drunk",
-            style: TextStyle(
-                color: Colors.amber, fontSize: 24, fontWeight: FontWeight.w400),
-          ),
+        toolbarHeight: 120,
+        title: Center(
+          child: Container(
+              height: 100,
+              margin: EdgeInsets.only(top: 20),
+              child: Image.asset('assets/images/app_logo.png')),
         ),
       ),
       body: Column(children: [
-        const Spacer(
-          flex: 1,
-        ),
         Expanded(
             flex: 2,
             child: Column(
               children: [
                 Container(
+                  color: Colors.white,
                   width: 200,
-                  margin: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(top: 30, bottom: 10),
                   child: TextField(controller: _controller),
                 ),
                 ElevatedButton(
                     onPressed: savePerson, child: const Text("Submit"))
               ],
             )),
-        const Spacer(),
         Expanded(
             flex: 4,
             child: players.isNotEmpty
@@ -72,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                             child: Text(
                           players[index].name,
                           style: const TextStyle(
-                              fontSize: 30, color: Colors.orange),
+                              fontSize: 30, color: Color(0XFFF79519)),
                         ))))
                 : Container()),
         Center(

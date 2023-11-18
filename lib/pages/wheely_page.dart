@@ -28,12 +28,16 @@ class _WheelyPageState extends State<WheelyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0XFF4A261C),
       appBar: AppBar(),
       body: Column(children: [
         Center(
           child: Text(
             widget.players[turnCount % widget.players.length].name,
-            style: const TextStyle(color: Colors.amber, fontSize: 30),
+            style: const TextStyle(
+                color: Color(0XFFF79519),
+                fontSize: 30,
+                fontWeight: FontWeight.bold),
           ),
         ),
         Expanded(
