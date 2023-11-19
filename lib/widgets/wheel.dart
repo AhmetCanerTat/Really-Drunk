@@ -30,6 +30,7 @@ class Item {
 }
 
 class _WheelState extends State<Wheel> {
+  late Library library;
   StreamController<int> selected = StreamController<int>();
   late int selectedOption = 0;
 
@@ -56,13 +57,20 @@ class _WheelState extends State<Wheel> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    bool isSpinning = false;
-    Library library = Library();
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    library = Library();
     library.addCurses();
     library.addBlessings();
     library.addMinigamesMP();
     library.addMysteries();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    bool isSpinning = false;
+
     final items = <Item>[
       Item()
         ..text = "Take 2 Sips"
@@ -102,7 +110,7 @@ class _WheelState extends State<Wheel> {
         ..color = const Color(0XFF74226C),
     ];
 
-    Curse pickCurse() {
+    Curse randomCurse() {
       double random = Random().nextDouble() * library.totalCurseProbability;
       double accumulator = 0.0;
       for (Curse curse in library.curseList) {
@@ -114,7 +122,7 @@ class _WheelState extends State<Wheel> {
       return library.curseList.last;
     }
 
-    Blessing pickBlessing() {
+    Blessing randomBlessing() {
       double random = Random().nextDouble() * library.totalBlessingProbability;
       double accumulator = 0.0;
       for (Blessing blessing in library.blessingList) {
@@ -126,7 +134,7 @@ class _WheelState extends State<Wheel> {
       return library.blessingList.last;
     }
 
-    Mystery pickMystery() {
+    Mystery randomMystery() {
       double random = Random().nextDouble() * library.totalMysteryProbability;
       double accumulator = 0.0;
       for (Mystery mystery in library.mysteryList) {
@@ -138,7 +146,7 @@ class _WheelState extends State<Wheel> {
       return library.mysteryList.last;
     }
 
-    MinigameMP pickMinigameMP() {
+    MinigameMP randomMinigameMP() {
       double random = Random().nextDouble() * library.totalMinigameProbability;
       double accumulator = 0.0;
       for (MinigameMP minigameMP in library.minigameMPList) {
@@ -148,6 +156,74 @@ class _WheelState extends State<Wheel> {
         }
       }
       return library.minigameMPList.last;
+    }
+
+    Curse curse = randomCurse();
+    Blessing blessing = randomBlessing();
+    Mystery mystery = randomMystery();
+    MinigameMP minigameMP = randomMinigameMP();
+    Curse pickCurse() {
+      while (1 > 0) {
+        Curse curse = randomCurse();
+        if (library.lastCurses.contains(curse)) {
+          continue;
+        } else {
+          library.lastCurses.add(curse);
+          if (library.lastCurses.length > 3) {
+            library.lastCurses.removeAt(0);
+          }
+          return curse;
+        }
+      }
+      return curse;
+    }
+
+    Blessing pickBlessing() {
+      while (1 > 0) {
+        blessing = randomBlessing();
+        if (library.lastBlessings.contains(blessing)) {
+          continue;
+        } else {
+          library.lastBlessings.add(blessing);
+          if (library.lastBlessings.length > 3) {
+            library.lastBlessings.removeAt(0);
+          }
+          return blessing;
+        }
+      }
+      return blessing;
+    }
+
+    Mystery pickMystery() {
+      while (1 > 0) {
+        mystery = randomMystery();
+        if (library.lastMysteries.contains(mystery)) {
+          continue;
+        } else {
+          library.lastMysteries.add(mystery);
+          if (library.lastMysteries.length > 3) {
+            library.lastMysteries.removeAt(0);
+          }
+          return mystery;
+        }
+      }
+      return mystery;
+    }
+
+    MinigameMP pickMinigameMP() {
+      while (1 > 0) {
+        minigameMP = randomMinigameMP();
+        if (library.lastMinigames.contains(minigameMP)) {
+          continue;
+        } else {
+          library.lastMinigames.add(minigameMP);
+          if (library.lastMinigames.length > 3) {
+            library.lastMinigames.removeAt(0);
+          }
+          return minigameMP;
+        }
+      }
+      return minigameMP;
     }
 
     Option pickOption() {

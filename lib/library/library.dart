@@ -8,6 +8,10 @@ class Library {
   List<MinigameMP> minigameMPList = [];
   List<Blessing> blessingList = [];
   List<Mystery> mysteryList = [];
+  List<Curse> lastCurses = [];
+  List<Blessing> lastBlessings = [];
+  List<MinigameMP> lastMinigames = [];
+  List<Mystery> lastMysteries = [];
   double totalCurseProbability = 0,
       totalMinigameProbability = 0,
       totalBlessingProbability = 0,
@@ -39,6 +43,8 @@ class Library {
       totalCurseProbability += curse.probability;
     }
   }
+
+  
 
   void addMinigamesMP() {
     minigameMPList.add(MinigameMP(
