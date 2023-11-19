@@ -39,14 +39,9 @@ class FullScreenModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pop(context); // Close the modal if tapped outside
-      },
-      child: Material(
-        color: Colors.transparent,
-        child: chooseOption(option),
-      ),
+    return Material(
+      color: Colors.transparent,
+      child: chooseOption(option),
     );
   }
 }
