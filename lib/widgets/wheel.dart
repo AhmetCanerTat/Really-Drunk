@@ -5,6 +5,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'package:reallydrunk/library/library.dart';
+import 'package:reallydrunk/model/blessing.dart';
+import 'package:reallydrunk/model/curse.dart';
+import 'package:reallydrunk/model/minigamemp.dart';
+import 'package:reallydrunk/model/mystery.dart';
 import 'package:reallydrunk/model/option.dart';
 import 'package:reallydrunk/model/takesip.dart';
 
@@ -98,18 +102,63 @@ class _WheelState extends State<Wheel> {
         ..color = const Color(0XFF74226C),
     ];
 
+    Curse pickCurse() {
+      double random = Random().nextDouble() * library.totalCurseProbability;
+      double accumulator = 0.0;
+      for (Curse curse in library.curseList) {
+        accumulator += curse.probability;
+        if (random < accumulator) {
+          return curse;
+        }
+      }
+      return library.curseList.last;
+    }
+
+    Blessing pickBlessing() {
+      double random = Random().nextDouble() * library.totalBlessingProbability;
+      double accumulator = 0.0;
+      for (Blessing blessing in library.blessingList) {
+        accumulator += blessing.probability;
+        if (random < accumulator) {
+          return blessing;
+        }
+      }
+      return library.blessingList.last;
+    }
+
+    Mystery pickMystery() {
+      double random = Random().nextDouble() * library.totalMysteryProbability;
+      double accumulator = 0.0;
+      for (Mystery mystery in library.mysteryList) {
+        accumulator += mystery.probability;
+        if (random < accumulator) {
+          return mystery;
+        }
+      }
+      return library.mysteryList.last;
+    }
+
+    MinigameMP pickMinigameMP() {
+      double random = Random().nextDouble() * library.totalMinigameProbability;
+      double accumulator = 0.0;
+      for (MinigameMP minigameMP in library.minigameMPList) {
+        accumulator += minigameMP.probability;
+        if (random < accumulator) {
+          return minigameMP;
+        }
+      }
+      return library.minigameMPList.last;
+    }
+
     Option pickOption() {
       if (items[selectedOption].text == "Curse") {
-        return library.curseList[Random().nextInt(library.curseList.length)];
+        return pickCurse();
       } else if (items[selectedOption].text == "Blessing") {
-        return library
-            .blessingList[Random().nextInt(library.blessingList.length)];
+        return pickBlessing();
       } else if (items[selectedOption].text == "Mystery") {
-        return library
-            .mysteryList[Random().nextInt(library.mysteryList.length)];
+        return pickMystery();
       } else if (items[selectedOption].text == "Minigame") {
-        return library
-            .minigameMPList[Random().nextInt(library.minigameMPList.length)];
+        return pickMinigameMP();
       }
       return TakeSip("Take sip", "Take sip");
     }
@@ -154,7 +203,6 @@ class _WheelState extends State<Wheel> {
               ],
             ),
           ),
-          Text(items[selectedOption].text)
         ],
       ),
     );
