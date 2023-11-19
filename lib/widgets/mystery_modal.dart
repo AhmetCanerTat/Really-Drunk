@@ -27,7 +27,8 @@ class MysteryModal extends StatelessWidget {
                   Center(
                     child: Text(
                       mystery.name,
-                      style: const TextStyle(fontSize: 50),
+                      style:
+                          const TextStyle(fontSize: 50, color: Colors.white70),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -36,7 +37,8 @@ class MysteryModal extends StatelessWidget {
                     child: Center(
                       child: Text(
                         mystery.description,
-                        style: const TextStyle(fontSize: 30),
+                        style: const TextStyle(
+                            fontSize: 30, color: Colors.white70),
                         textAlign: TextAlign.center,
                       ),
                     ),

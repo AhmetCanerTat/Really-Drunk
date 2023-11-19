@@ -18,6 +18,7 @@ class Library {
       totalMysteryProbability = 0;
 
   void addCurses() {
+    curseList.add(Curse("If you laugh you drink", "Clown", 5, 0.2));
     curseList.add(Curse("You have sit on anything other than a chair",
         "Too Comfortable", 5, 0.2));
     curseList.add(
@@ -43,8 +44,6 @@ class Library {
       totalCurseProbability += curse.probability;
     }
   }
-
-  
 
   void addMinigamesMP() {
     minigameMPList.add(MinigameMP(
@@ -82,6 +81,26 @@ class Library {
         "Awkward",
         0,
         0.3));
+    mysteryList
+        .add(Mystery("Who laughs first takes 3 sips", "Not funny", 5, 0.2));
+    mysteryList.add(Mystery(
+        "Everyplayer has to use nicknames, if you use real names take 3 sips",
+        "NickNames",
+        0,
+        0.2));
+    mysteryList.add(Mystery(
+        "Choose a theme  (e.g., animal noises, singing, speaking in accents) for 1 round, anyone fails has to take 3 sips",
+        "Themed Round",
+        0,
+        0.3));
+    mysteryList.add(Mystery("Pay respects to Master Oogway, take 3 sips",
+        "My time has come", 0, 0.3));
+
+    mysteryList.add(Mystery(
+        "Yell jag älskar öl and drink with people beside you",
+        "JAG ÄLSKAR ÖL",
+        0,
+        0.3));
     for (Mystery mystery in mysteryList) {
       totalMysteryProbability += mystery.probability;
     }
@@ -90,12 +109,19 @@ class Library {
   void addBlessings() {
     blessingList.add(
         Blessing("Any curses you currently have are gone", "Cure", 0, 0.25));
+    blessingList.add(Blessing(
+        "You can skip your next drinking obligation", "Free Pass", 0, 0.25));
     blessingList.add(Blessing("Give another player 3 sips", "Gift", 0, 0.25));
     blessingList.add(Blessing(
         "Next time you drink you can pass it to someone", "Reflect", 0, 0.25));
     blessingList.add(Blessing(
         "Choose two player to be mate, whenever one drink other has to drink aswell",
         "Cupid",
+        0,
+        0.25));
+    blessingList.add(Blessing(
+        "Choose a word that only you can say for one round. If anyone else says your word they must drink",
+        "Forbidden Word",
         0,
         0.25));
     for (Blessing blessing in blessingList) {

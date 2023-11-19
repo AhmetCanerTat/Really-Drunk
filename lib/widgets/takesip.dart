@@ -1,3 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class TakeSip extends StatelessWidget {
@@ -18,13 +22,13 @@ class TakeSip extends StatelessWidget {
                 color: Colors.blueAccent,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
               ),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Center(
                     child: Text(
-                      "Take two sips",
+                      "Take ${Random().nextInt(3) + 2} sips",
                       style: TextStyle(fontSize: 50),
                       textAlign: TextAlign.center,
                     ),

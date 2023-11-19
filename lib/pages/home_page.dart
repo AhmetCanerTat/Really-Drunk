@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:reallydrunk/model/player.dart';
 import 'package:reallydrunk/pages/wheely_page.dart';
@@ -10,16 +11,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final player = AudioPlayer();
   late TextEditingController _controller;
   List<Player> players = [];
+  Future<void> startPlayer() async {
+    player.play(AssetSource('soundtracks/lobby_music.mp3'));
+    player.setReleaseMode(ReleaseMode.loop);
+  }
+
   @override
   void initState() {
     super.initState();
+    startPlayer();
     _controller = TextEditingController();
   }
 
   @override
   void dispose() {
+    player.stop();
     _controller.dispose();
     super.dispose();
   }
