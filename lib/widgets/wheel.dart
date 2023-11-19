@@ -73,7 +73,7 @@ class _WheelState extends State<Wheel> {
 
     final items = <Item>[
       Item()
-        ..text = "Take 2 Sips"
+        ..text = "Take Sips"
         ..color = Colors.blueAccent,
       Item()
         ..text = "Curse"
@@ -82,7 +82,7 @@ class _WheelState extends State<Wheel> {
         ..text = "Minigame"
         ..color = const Color(0XFFF79D26),
       Item()
-        ..text = "Take 2 Sips"
+        ..text = "Take Sips"
         ..color = Colors.blueAccent,
       Item()
         ..text = "Blessing"
@@ -91,7 +91,7 @@ class _WheelState extends State<Wheel> {
         ..text = "Mystery"
         ..color = const Color(0XFF74226C),
       Item()
-        ..text = "Take 2 Sips"
+        ..text = "Take Sips"
         ..color = Colors.blueAccent,
       Item()
         ..text = "Curse"
@@ -100,7 +100,7 @@ class _WheelState extends State<Wheel> {
         ..text = "Minigame"
         ..color = const Color(0XFFF79D26),
       Item()
-        ..text = "Take 2 Sips"
+        ..text = "Take Sips"
         ..color = Colors.blueAccent,
       Item()
         ..text = "Blessing"
