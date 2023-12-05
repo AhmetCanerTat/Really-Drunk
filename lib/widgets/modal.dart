@@ -9,9 +9,10 @@ import 'package:reallydrunk/widgets/blessing_modal.dart';
 import 'package:reallydrunk/widgets/curse_modal.dart';
 import 'package:reallydrunk/widgets/minigamemp_modal.dart';
 import 'package:reallydrunk/widgets/mystery_modal.dart';
-import 'package:reallydrunk/widgets/rockpaper.dart';
+
 import 'package:reallydrunk/widgets/takesip.dart';
 
+// ignore: must_be_immutable
 class FullScreenModal extends StatelessWidget {
   Library library = Library();
   Option option;

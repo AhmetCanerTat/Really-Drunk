@@ -85,6 +85,13 @@ class _HomePageState extends State<HomePage> {
                               fontSize: 30, color: Color(0XFFF79519)),
                         ))))
                 : Container()),
+        const Center(
+          child: Text(
+            "This app was made by Ahmet Caner Tat & Ian Nicholson",
+            style: TextStyle(color: Colors.white70, fontSize: 15),
+            textAlign: TextAlign.center,
+          ),
+        ),
         Center(
             child: Container(
                 margin: const EdgeInsets.all(50),

@@ -2,6 +2,7 @@ import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:reallydrunk/model/minigamemp.dart';
 
+// ignore: must_be_immutable
 class MinigameMPModal extends StatefulWidget {
   MinigameMP minigameMP;
   MinigameMPModal({super.key, required this.minigameMP});
@@ -11,7 +12,7 @@ class MinigameMPModal extends StatefulWidget {
 }
 
 class _MinigameMPModalState extends State<MinigameMPModal> {
-  final int _duration = 10;
+
   final CountDownController _controller = CountDownController();
 
   @override
