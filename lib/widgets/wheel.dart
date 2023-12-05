@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
@@ -11,6 +12,7 @@ import 'package:reallydrunk/model/givesip.dart';
 import 'package:reallydrunk/model/minigamemp.dart';
 import 'package:reallydrunk/model/mystery.dart';
 import 'package:reallydrunk/model/option.dart';
+import 'package:reallydrunk/model/player.dart';
 import 'package:reallydrunk/model/takesip.dart';
 
 import 'package:reallydrunk/widgets/modal.dart';
@@ -18,8 +20,9 @@ import 'package:reallydrunk/widgets/modal.dart';
 // ignore: must_be_immutable
 class Wheel extends StatefulWidget {
   final void Function() increaseTurn;
+  final List<Player> players;
 
-  Wheel({super.key, required this.increaseTurn});
+  const Wheel({super.key, required this.increaseTurn, required this.players});
   @override
   // ignore: library_private_types_in_public_api
   State<Wheel> createState() => _WheelState();
@@ -27,7 +30,7 @@ class Wheel extends StatefulWidget {
 
 class Item {
   String text = "";
-  Color color = const Color(000000);
+  Color color = const Color(0x00000000);
 }
 
 class _WheelState extends State<Wheel> {
@@ -52,6 +55,7 @@ class _WheelState extends State<Wheel> {
       builder: (BuildContext context) {
         return FullScreenModal(
           option: option,
+          players: widget.players,
         );
       },
     );
@@ -59,7 +63,6 @@ class _WheelState extends State<Wheel> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     library = Library();
     library.addCurses();

@@ -42,10 +42,10 @@ class CurseModal extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Center(
+                   Center(
                     child: Text(
-                      "For 1 round",
-                      style: TextStyle(fontSize: 30),
+                      "For ${curse.round} round",
+                      style: const TextStyle(fontSize: 30),
                     ),
                   )
                   // Add more widgets for the modal content

@@ -28,7 +28,7 @@ class _WheelyPageState extends State<WheelyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF353531),
+      backgroundColor: const Color(0XFF353531),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
@@ -47,6 +47,7 @@ class _WheelyPageState extends State<WheelyPage> {
           child: Container(
               margin: const EdgeInsets.all(10),
               child: Wheel(
+                players: widget.players,
                 increaseTurn: delayedFunction,
               )),
         ),

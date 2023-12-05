@@ -18,28 +18,28 @@ class Library {
       totalMysteryProbability = 0;
 
   void addCurses() {
-    curseList.add(Curse("If you laugh you drink", "Clown", 5, 0.2));
+    curseList.add(Curse("If you laugh you drink", "Clown", 1, 0.2));
     curseList.add(Curse("You have sit on anything other than a chair",
-        "Too Comfortable", 5, 0.2));
+        "Too Comfortable", 2, 0.2));
     curseList.add(
-        Curse("You cannot speak! If you do, take 5 sips.", "Silence", 5, 0.2));
+        Curse("You cannot speak! If you do, take 5 sips.", "Silence", 1, 0.2));
     curseList.add(Curse(
-        "All sips that you receive are doubled", "Double or Nothing", 5, 0.05));
+        "All sips that you receive are doubled", "Double or Nothing", 1, 0.05));
     curseList.add(Curse(
         "Everytime someone drinks you must also drink (half the amount)",
         "Empathy",
-        3,
+        1,
         0.3));
     curseList.add(
-        Curse("You must drink without using your hands.", "Amputee", 3, 0.05));
+        Curse("You must drink without using your hands.", "Amputee", 1, 0.05));
     curseList.add(Curse(
         "You have to drink whenever the person on your left has to drink",
         "False Love",
-        5,
+        2,
         0.2));
     curseList.add(Curse("Everytime you drink you have get up and spin 3 times",
-        "Beyblade", 3, 0.15));
-    curseList.add(Curse("You have dinosaur hands", "Chicken?", 5, 0.15));
+        "Beyblade", 2, 0.15));
+    curseList.add(Curse("You have dinosaur hands", "Chicken?", 2, 0.2));
     for (Curse curse in curseList) {
       totalCurseProbability += curse.probability;
     }
@@ -47,24 +47,21 @@ class Library {
 
   void addMinigamesMP() {
     minigameMPList.add(MinigameMP(
-        "You are it, play tag with the person on your left for 10 seconds. Whoever is 'it' at the end must drink 5 sips",
+        "You are it, play tag with player for 10 seconds. Whoever is 'it' at the end must drink 3 sips",
         "Tag",
         10,
         0.2));
     minigameMPList.add(MinigameMP(
-        "The last player touching the floor must drink 5 sips.",
+        "The last person touching the floor must drink 3 sips.",
         "The floor is Lava",
         8,
         0.2));
     minigameMPList.add(
-        MinigameMP("You have to stand on your one foot", "One Leg", 20, 0.2));
+        MinigameMP("You have to stand on your one foot if you fail take 3 sips", "One Leg", 20, 0.2));
     minigameMPList.add(MinigameMP(
-        "You have to arm wrestle the person on your left ",
-        "Arm Wrestle",
-        180,
-        0.2));
-    minigameMPList.add(MinigameMP(
-        "Staring Contest the person on your left ", "Eyes dont lie", 30, 0.2));
+        "You have to arm wrestle with player, loser takes 3 sips ", "Arm Wrestle", 180, 0.2));
+    minigameMPList.add(
+        MinigameMP("Staring contest with player , loser takes 3 sips", "Eyes dont lie", 30, 0.2));
 
     for (MinigameMP minigameMP in minigameMPList) {
       totalMinigameProbability += minigameMP.probability;

@@ -1,18 +1,19 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:reallydrunk/model/minigamemp.dart';
+import 'package:reallydrunk/model/player.dart';
 
 // ignore: must_be_immutable
 class MinigameMPModal extends StatefulWidget {
   MinigameMP minigameMP;
-  MinigameMPModal({super.key, required this.minigameMP});
+  Player player;
+  MinigameMPModal({super.key, required this.minigameMP, required this.player});
 
   @override
   State<MinigameMPModal> createState() => _MinigameMPModalState();
 }
 
 class _MinigameMPModalState extends State<MinigameMPModal> {
-
   final CountDownController _controller = CountDownController();
 
   @override
@@ -152,7 +153,8 @@ class _MinigameMPModalState extends State<MinigameMPModal> {
                     padding: const EdgeInsets.all(10),
                     child: Center(
                       child: Text(
-                        widget.minigameMP.description,
+                        widget.minigameMP.description
+                            .replaceFirst("player", widget.player.name),
                         style: const TextStyle(fontSize: 30),
                         textAlign: TextAlign.center,
                       ),

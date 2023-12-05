@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class GiveOrTakeSip extends StatelessWidget {
   bool give;
   GiveOrTakeSip({super.key, required this.give});
