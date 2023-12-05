@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF353531),
+      backgroundColor: const Color(0XFF353531),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -51,12 +51,12 @@ class _HomePageState extends State<HomePage> {
         title: Center(
           child: Container(
               height: 100,
-              margin: EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.only(top: 20),
               child: Image.asset('assets/images/app_logo.png')),
         ),
       ),
       body: Column(children: [
-        Spacer(
+        const Spacer(
           flex: 2,
         ),
         Expanded(
@@ -67,7 +67,13 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.white,
                   width: 200,
                   margin: const EdgeInsets.only(top: 30, bottom: 10),
-                  child: TextField(controller: _controller),
+                  child: TextField(
+                    textAlign: TextAlign.center,
+                    controller: _controller,
+                    decoration: const InputDecoration(
+                      hintText: "Player's name",
+                    ),
+                  ),
                 ),
                 ElevatedButton(
                     onPressed: savePerson, child: const Text("Submit"))

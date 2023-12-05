@@ -7,6 +7,7 @@ import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 import 'package:reallydrunk/library/library.dart';
 import 'package:reallydrunk/model/blessing.dart';
 import 'package:reallydrunk/model/curse.dart';
+import 'package:reallydrunk/model/givesip.dart';
 import 'package:reallydrunk/model/minigamemp.dart';
 import 'package:reallydrunk/model/mystery.dart';
 import 'package:reallydrunk/model/option.dart';
@@ -82,7 +83,7 @@ class _WheelState extends State<Wheel> {
         ..text = "Minigame"
         ..color = const Color(0XFFF79D26),
       Item()
-        ..text = "Take Sips"
+        ..text = "Give Sips"
         ..color = Colors.blueAccent,
       Item()
         ..text = "Blessing"
@@ -100,7 +101,7 @@ class _WheelState extends State<Wheel> {
         ..text = "Minigame"
         ..color = const Color(0XFFF79D26),
       Item()
-        ..text = "Take Sips"
+        ..text = "Give Sips"
         ..color = Colors.blueAccent,
       Item()
         ..text = "Blessing"
@@ -235,6 +236,8 @@ class _WheelState extends State<Wheel> {
         return pickMystery();
       } else if (items[selectedOption].text == "Minigame") {
         return pickMinigameMP();
+      } else if (items[selectedOption].text == "Give Sips") {
+        return GiveSip("Give sip", "Give sip");
       }
       return TakeSip("Take sip", "Take sip");
     }

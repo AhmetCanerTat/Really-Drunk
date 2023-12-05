@@ -4,8 +4,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class TakeSip extends StatelessWidget {
-  const TakeSip({super.key});
+class GiveOrTakeSip extends StatelessWidget {
+  bool give;
+  GiveOrTakeSip({super.key, required this.give});
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +28,17 @@ class TakeSip extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Center(
-                    child: Text(
-                      "Take ${Random().nextInt(3) + 2} sips",
-                      style: TextStyle(fontSize: 50),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                      child: give
+                          ? Text(
+                              "Give ${Random().nextInt(3) + 2} sips",
+                              style: TextStyle(fontSize: 50),
+                              textAlign: TextAlign.center,
+                            )
+                          : Text(
+                              "Take ${Random().nextInt(3) + 2} sips",
+                              style: TextStyle(fontSize: 50),
+                              textAlign: TextAlign.center,
+                            )),
                 ],
               ),
             ),

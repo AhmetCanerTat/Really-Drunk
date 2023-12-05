@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reallydrunk/library/library.dart';
 import 'package:reallydrunk/model/blessing.dart';
 import 'package:reallydrunk/model/curse.dart';
+import 'package:reallydrunk/model/givesip.dart';
 import 'package:reallydrunk/model/minigamemp.dart';
 import 'package:reallydrunk/model/mystery.dart';
 import 'package:reallydrunk/model/option.dart';
@@ -10,7 +11,7 @@ import 'package:reallydrunk/widgets/curse_modal.dart';
 import 'package:reallydrunk/widgets/minigamemp_modal.dart';
 import 'package:reallydrunk/widgets/mystery_modal.dart';
 
-import 'package:reallydrunk/widgets/takesip.dart';
+import 'package:reallydrunk/widgets/giveortakesip.dart';
 
 // ignore: must_be_immutable
 class FullScreenModal extends StatelessWidget {
@@ -32,8 +33,14 @@ class FullScreenModal extends StatelessWidget {
     } else if (option.type == "Blessing") {
       Blessing blessing = option as Blessing;
       selectedWidget = BlessingModal(blessing: blessing);
-    } else {
-      selectedWidget = TakeSip();
+    } else if (option.type == "GiveSip") {
+      selectedWidget = GiveOrTakeSip(
+        give: true,
+      );
+    } else if (option.type == "TakeSip") {
+      selectedWidget = GiveOrTakeSip(
+        give: false,
+      );
     }
     return selectedWidget;
   }
