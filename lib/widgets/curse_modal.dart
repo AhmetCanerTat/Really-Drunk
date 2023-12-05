@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reallydrunk/model/curse.dart';
 
+// ignore: must_be_immutable
 class CurseModal extends StatelessWidget {
   Curse curse;
   CurseModal({super.key, required this.curse});

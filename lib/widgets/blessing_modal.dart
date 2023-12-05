@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reallydrunk/model/blessing.dart';
 
+// ignore: must_be_immutable
 class BlessingModal extends StatelessWidget {
   Blessing blessing;
   BlessingModal({super.key, required this.blessing});
