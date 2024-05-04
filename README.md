@@ -1,6 +1,6 @@
 # reallydrunk
 
-A new Flutter project.
+This was a project for a Hackathon. The app was desgined and implemented in 48 hours.
 
 ## Getting Started
 
